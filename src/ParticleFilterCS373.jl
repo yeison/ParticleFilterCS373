@@ -4,6 +4,8 @@ using Distributions
 world_size = 100
 landmarks  = [(20.0, 20.0), (80.0, 80.0), (20.0, 80.0), (80.0, 20.0)]
 
+export Robot, set!, set_noise!, evaluate, sense, move!, Gaussian, measurement_prob
+
 type Robot
   x::Float64
   y::Float64
