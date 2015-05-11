@@ -4,7 +4,7 @@ using Distributions
 world_size = 100
 landmarks  = [(20.0, 20.0), (80.0, 80.0), (20.0, 80.0), (80.0, 20.0)]
 
-export Robot, set!, set_noise!, evaluate, sense, move!, Gaussian, measurement_prob
+export Robot, set!, set_noise!, evaluate, sense, move, Gaussian, measurement_prob
 
 type Robot
   x::Float64
@@ -64,7 +64,7 @@ function sense(rob::Robot)
   return Z
 end
 
-function move!(rob::Robot, turn, forward)
+function move(rob::Robot, turn, forward)
   if(forward < 0)
     throw(ArgumentError("Robot cannot move backwards"))
   end
