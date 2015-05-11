@@ -20,10 +20,13 @@ function Robot()
 end
 
 function set!(rob::Robot, new_x, new_y, new_orientation)
-  if(new_x < 1 || new_x > world_size)
+  new_x = abs(new_x % world_size)
+  new_y = abs(new_y % world_size)
+
+  if(new_x < 0 || new_x > world_size)
     throw(ArgumentError(@sprintf("X coordinate out of bounds: %s", new_x)))
   end
-  if(new_y < 1 || new_y > world_size)
+  if(new_y < 0 || new_y > world_size)
     throw(ArgumentError(@sprintf("Y coordinate out of bounds: %s", new_y)))
   end
 
