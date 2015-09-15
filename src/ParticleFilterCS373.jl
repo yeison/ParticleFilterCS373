@@ -99,10 +99,10 @@ end
 
 function measurement_prob(rob::Robot, measurements)
   prob = 1.0
-  for (x, y) in landmarks
+  for ((x, y), m) in zip(landmarks, measurements)
     dist = sqrt((rob.x - x)^2 + (rob.y - y)^2)
+    prob *= Gaussian(dist, rob.sense_noise, m)
   end
   return prob
 end
-
 end
